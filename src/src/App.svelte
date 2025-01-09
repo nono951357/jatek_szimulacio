@@ -1,24 +1,20 @@
 <script>
+  import { Router, Route, Link } from 'svelte-routing';
   import Home from './routes/Home.svelte';
   import KoPapirOllo from './routes/KoPapirOllo.svelte';
   import Sic_bo from './routes/Sic_bo.svelte';
-  
-  let currentPath = window.location.pathname.replace('/jatek_szimulacio', '') || '/';
 </script>
 
-<nav>
-  <a href="/jatek_szimulacio/" class="nav-a" on:click={() => currentPath = '/'}>Home</a>
-  <a href="/jatek_szimulacio/KoPapirOllo" class="nav-a" on:click={() => currentPath = '/KoPapirOllo'}>Kő Papír Olló</a>
-  <a href="/jatek_szimulacio/Sic-bo" class="nav-a" on:click={() => currentPath = '/Sic-bo'}>Sic bo</a>
-</nav>
-
-{#if currentPath === '/'}
-  <Home />
-{:else if currentPath === '/KoPapirOllo'}
-  <KoPapirOllo />
-{:else if currentPath === '/Sic-bo'}
-  <Sic_bo />
-{/if}
+<Router>
+  <nav>
+    <Link to="/" class="nav-a">Home</Link>
+    <Link to="/KoPapirOllo" class="nav-a">Kő Papír Olló</Link>
+    <Link to="/Sic-bo" class="nav-a">Sic bo</Link>
+  </nav>
+  <Route path="/" class="nav-a" component={Home} />
+  <Route path="/KoPapirOllo" component={KoPapirOllo} />
+  <Route path="/Sic-bo" component={Sic_bo} />
+</Router>
 
 <style>
 

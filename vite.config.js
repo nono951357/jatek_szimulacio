@@ -8,10 +8,5 @@ export default defineConfig({
   build: {
     outDir: 'docs',
     emptyOutDir: true
-  },
-  resolve: {
-    alias: {
-      '$app/paths': '/src/paths.js'
-    }
   }
 })
