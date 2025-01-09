@@ -1,14 +1,11 @@
-import { mount } from 'svelte'
-import './app.css'
-import App from './App.svelte'
-import { Router, Route } from 'svelte-routing'
+import App from './App.svelte';
+import { base } from '$app/paths';
 
-const app = mount(App, {
+const app = new App({
   target: document.getElementById('app'),
   props: {
-    Router,
-    Route
+    base: base || ''
   }
-})
+});
 
-export default app
+export default app;
